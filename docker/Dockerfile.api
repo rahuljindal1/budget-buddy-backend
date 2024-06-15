@@ -1,0 +1,8 @@
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y wget curl gnupg git ca-certificates build-essential zlib1g-dev libicu-dev
+
+# Install Node
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs 
+
+RUN npm i -g @nestjs/cli yarn
