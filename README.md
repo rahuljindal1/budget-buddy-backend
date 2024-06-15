@@ -5,31 +5,31 @@ Easy and optimized API's for budgeting solutions.
 ## Installation
 
 ```bash
-$ pnpm install
+$ yarn install
 ```
 
 ## Running the app
 
 ```bash
 # development
-$ pnpm run start
+$ yarn run start
 
 # watch mode
-$ pnpm run start:dev
+$ yarn run start:dev
 
 # production mode
-$ pnpm run start:prod
+$ yarn run start:prod
 ```
 
 ## Test
 
 ```bash
 # unit tests
-$ pnpm run test
+$ yarn run test
 
 # e2e tests
-$ pnpm run test:e2e
+$ yarn run test:e2e
 
 # test coverage
-$ pnpm run test:cov
+$ yarn run test:cov
 ```

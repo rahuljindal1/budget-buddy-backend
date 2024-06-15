@@ -1,0 +1,25 @@
+{
+    "name": "budget-buddy-backend",
+    "dockerComposeFile": "../docker/docker-compose.yml",
+    "service": "api",
+    "workspaceFolder": "/home/workspace",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "esbenp.prettier-vscode",
+          "eamodio.gitlens",
+          "vscode-icons-team.vscode-icons",
+          "ms-vscode.live-server",
+          "dbaeumer.vscode-eslint",
+          "mongodb.mongodb-vscode",
+          "hediet.vscode-drawio",
+          "tomoyukim.vscode-mermaid-editor",
+          "Arjun.swagger-viewer",
+          "tomoki1207.pdf",
+          "tumido.cron-explained",
+          "pomdtr.excalidraw-editor"
+        ]
+      }
+    },
+    "postCreateCommand": "bash /home/workspace/init.sh "
+  }
