@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { FeaturesModule } from './modules';
+import { ControllersModule } from './controllers';
 @Module({
-  imports: [FeaturesModule, ConfigModule.forRoot({ isGlobal: true })],
+  imports: [ControllersModule, ConfigModule.forRoot({ isGlobal: true })],
   controllers: [],
   providers: [],
 })

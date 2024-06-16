@@ -1,6 +1,16 @@
 import { Schema } from 'mongoose';
-import { RequiredString } from '../SchemaTypes';
+import {
+  OptionalString,
+  RequiredBoolean,
+  RequiredString,
+} from '../SchemaTypes';
 
-export const UserSchema = new Schema({
-  email: RequiredString,
-});
+export const UserSchema = new Schema(
+  {
+    email: { ...RequiredString, unique: true },
+    password: RequiredString,
+    isDeleted: { ...RequiredBoolean, default: false },
+    resetPasswordToken: OptionalString,
+  },
+  { timestamps: true },
+);
