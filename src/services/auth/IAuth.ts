@@ -1,7 +1,7 @@
-import { SignUpRequestModel } from 'src/models';
+import { SignUpRequestModel, UserModel } from 'src/models';
 
 export type IAuthService = {
-  signUp(request: SignUpRequestModel): Promise<void>;
+  signUp(request: SignUpRequestModel): Promise<UserModel>;
 };
 
 export const IAuthService = Symbol('IAuthService');

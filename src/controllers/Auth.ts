@@ -13,8 +13,7 @@ export class AuthController {
 
   @Post('sign-up')
   @ApiBody({ type: SignUpRequestModel })
-  signUp(@Body() request: SignUpRequestModel) {
-    console.log(request);
-    return { success: true };
+  async signUp(@Body() request: SignUpRequestModel) {
+    return await this.authService.signUp(request);
   }
 }

@@ -7,7 +7,7 @@ import {
 
 export const UserSchema = new Schema(
   {
-    email: RequiredString,
+    email: { ...RequiredString, unique: true },
     password: RequiredString,
     isDeleted: { ...RequiredBoolean, default: false },
     resetPasswordToken: OptionalString,

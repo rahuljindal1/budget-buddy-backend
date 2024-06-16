@@ -34,9 +34,6 @@ export class UserModel extends BaseModel<UserModel> {
 
 export class CreateUserModelDto extends BaseModel<CreateUserModelDto> {
   @IsString()
-  readonly id: string;
-
-  @IsString()
   readonly email: string;
 
   @IsString()
