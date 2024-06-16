@@ -10,11 +10,37 @@ services:
     volumes:
       - ../:/home/workspace
       - /home/workspace/node_modules
-      - /home/workspace/.pnpm-store
     ports:
       - 4000:3000
     environment:
       NODE_ENV: development
+      PORT: 3000
+      DB_CONNECTION_STRING: mongodb://rootusername:rootpassword@api-db:27017/budgetBuddy?authSource=admin
+      DB_NAME: budgetBuddy
     entrypoint: bash
     stdin_open: true
     tty: true
+    depends_on:
+      api-db:
+        condition: service_healthy
+  api-db:
+    image: mongo:latest
+    container_name: budget-buddy-db
+    ports:
+      - 27018:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: rootusername
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    volumes:
+      - budget-buddy-data:/data/db
+    stdin_open: true
+    tty: true
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  budget-buddy-data:
+    driver: local
