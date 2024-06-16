@@ -7,16 +7,14 @@ import {
 } from 'class-validator';
 import { UserRoleEnum } from 'src/enums';
 import { BaseModel } from '../BaseModel';
+import * as bcrypt from 'bcrypt';
 
-export class UserModel extends BaseModel<UserModel> {
+export abstract class User<T> extends BaseModel<T> {
   @IsString()
   readonly id: string;
 
   @IsString()
   readonly email: string;
-
-  @IsString()
-  readonly password: string;
 
   @IsEnum(UserRoleEnum)
   readonly userRole: UserRoleEnum;
@@ -30,6 +28,23 @@ export class UserModel extends BaseModel<UserModel> {
 
   @IsDate()
   readonly updatedAt: Date;
+}
+
+export class UserModel extends User<UserModel> {
+  @IsString()
+  readonly password: string;
+
+  public static async hashPassword(password: string) {
+    const saltOrRounds = 10;
+    return await bcrypt.hash(password, saltOrRounds);
+  }
+
+  public static async comparePassword(
+    password: string,
+    hashedPassword: string,
+  ) {
+    return bcrypt.compare(password, hashedPassword);
+  }
 }
 
 export class CreateUserModelDto extends BaseModel<CreateUserModelDto> {

@@ -20,6 +20,7 @@ export class AuthService implements IAuthService {
     return await this.userRepository.create(
       new CreateUserModelDto({
         ...request,
+        password: await UserModel.hashPassword(request.password),
         isDeleted: false,
         userRole: UserRoleEnum.USER,
       }),
