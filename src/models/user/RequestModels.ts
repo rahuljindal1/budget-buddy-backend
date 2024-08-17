@@ -11,3 +11,13 @@ export class SignUpRequestModel extends BaseModel<SignUpRequestModel> {
   @ApiProperty()
   readonly password: string;
 }
+
+export class LoginRequestModel extends BaseModel<LoginRequestModel> {
+  @IsString()
+  @ApiProperty()
+  readonly email: string;
+
+  @IsString()
+  @ApiProperty()
+  readonly password: string;
+}

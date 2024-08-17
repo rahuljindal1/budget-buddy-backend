@@ -1,6 +1,6 @@
 import { Body, Controller, Inject, Post } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
-import { SignUpRequestModel } from 'src/models';
+import { LoginRequestModel, SignUpRequestModel } from 'src/models';
 import { IAuthService } from 'src/services/auth';
 
 @ApiTags('Auth')
@@ -15,5 +15,10 @@ export class AuthController {
   @ApiBody({ type: SignUpRequestModel })
   async signUp(@Body() request: SignUpRequestModel) {
     return await this.authService.signUp(request);
+  }
+  @Post('login')
+  @ApiBody({ type: SignUpRequestModel })
+  async login(@Body() request: LoginRequestModel) {
+    return await this.authService.login(request);
   }
 }
